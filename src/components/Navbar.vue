@@ -1,8 +1,10 @@
 <template>
-  <div class="flex justify-between items-center px-10 py-5">
+  <div
+    class="flex justify-center gap-y-4 md:gap-0 md:justify-between items-center flex-wrap px-10 py-5"
+  >
     <a href="/" class="text-4xl text-green-900 font-[cursive]">Cookies</a>
     <nav>
-      <ul class="flex space-x-4">
+      <ul class="flex justify-center space-x-4">
         <li>
           <a href="#" class="text-green-900 text-lg hover:text-amber-900"
             >Home</a
