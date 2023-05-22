@@ -66,8 +66,8 @@ const editCookie = (currentCookie, editedCookie) => {
     if (foundCookie == index) {
       Object.assign(cookie, editedCookie);
     }
-    open.value = !open.value;
-    isEditing.value = false;
+    isEditing.value = !isEditing.value;
+    open.value = false;
   });
 };
 
@@ -77,6 +77,10 @@ const selectedCookieToEdit = (currentCookie) => {
 };
 
 const openModal = () => {
+  if (isEditing.value) {
+    isEditing.value = false;
+  }
+
   open.value = !open.value;
 };
 </script>
