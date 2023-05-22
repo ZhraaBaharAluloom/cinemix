@@ -17,15 +17,16 @@
       @selectedCookieToEdit="selectedCookieToEdit"
       @openModal="openModal"
     />
-
-    <AddOrEditCookieFrom
-      v-if="open"
-      :oldCookie="oldCookie"
-      :isEditing="isEditing"
-      @addCookie="addCookie"
-      @openModal="openModal"
-      @editCookie="editCookie"
-    />
+    <Transition>
+      <AddOrEditCookieFrom
+        v-if="open"
+        :oldCookie="oldCookie"
+        :isEditing="isEditing"
+        @addCookie="addCookie"
+        @openModal="openModal"
+        @editCookie="editCookie"
+      />
+    </Transition>
   </div>
 </template>
 
