@@ -6,6 +6,12 @@
       >Search</label
     >
     <div class="relative">
+      <div class="absolute inset-y-0 right-4 flex items-center cursor-pointer">
+        <CloseIcon
+          class="close-icon text-white hover:text-black"
+          @click="clearSearchBar"
+        />
+      </div>
       <div
         class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
       >
@@ -26,7 +32,7 @@
         </svg>
       </div>
       <input
-        type="search"
+        type="text"
         id="default-search"
         class="block w-full p-2 pl-10 outline-none text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-red-800 focus:border-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
         placeholder="Search Movies..."
@@ -38,6 +44,7 @@
 
 <script setup>
 import { ref } from "vue";
+import CloseIcon from "vue-material-design-icons/Close.vue";
 
 const inputValue = ref("");
 const emit = defineEmits(["getMovie", "getMovies"]);
@@ -49,5 +56,10 @@ const handleSearchbar = () => {
   } else {
     emit("getMovie", inputValue.value);
   }
+};
+
+const clearSearchBar = () => {
+  inputValue.value = "";
+  emit("getMovies");
 };
 </script>
