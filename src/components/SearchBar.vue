@@ -30,7 +30,6 @@
         id="default-search"
         class="block w-full p-2 pl-10 outline-none text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-red-800 focus:border-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
         placeholder="Search Movies..."
-        required
         v-model="inputValue"
       />
     </div>
@@ -41,12 +40,14 @@
 import { ref } from "vue";
 
 const inputValue = ref("");
-const emit = defineEmits(["getMovie"]);
+const emit = defineEmits(["getMovie", "getMovies"]);
 console.log("🚀 ~ file: SearchBar.vue:45 ~ emit:", { emit });
 
 const handleSearchbar = () => {
-  console.log("🚀 ~ file: SearchBar.vue:44 ~ inputValue:", inputValue.value);
-  emit("getMovie", inputValue.value);
-  inputValue.value = "";
+  if (inputValue.value == "") {
+    emit("getMovies");
+  } else {
+    emit("getMovie", inputValue.value);
+  }
 };
 </script>

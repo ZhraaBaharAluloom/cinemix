@@ -10,7 +10,11 @@
           url('https://images.pexels.com/photos/4722571/pexels-photo-4722571.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
       "
     >
-      <Navbar @openModal="openModal" @getMovie="getMovie" />
+      <Navbar
+        @openModal="openModal"
+        @getMovie="getMovie"
+        @getMovies="getMovies"
+      />
       <div
         class="text-4xl text-white flex flex-col justify-center items-center h-[80vh] font-serif"
       >
@@ -48,7 +52,6 @@
 
 <script setup>
 import { onMounted, ref } from "vue";
-import movies from "./movies";
 import AddOrEditMovieFrom from "./components/AddOrEditMovieFrom.vue";
 import MovieList from "./components/MovieList.vue";
 import Navbar from "./components/Navbar.vue";
