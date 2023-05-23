@@ -48,13 +48,23 @@ import CloseIcon from "vue-material-design-icons/Close.vue";
 
 const inputValue = ref("");
 const emit = defineEmits(["getMovie", "getMovies"]);
-console.log("🚀 ~ file: SearchBar.vue:45 ~ emit:", { emit });
+
+const scrollToBottom = () => {
+  const windowHeight = window.innerHeight;
+  const scrollPosition = windowHeight * 0.9; // Set the desired scroll position as a percentage of the window height
+  const scrollOptions = {
+    top: scrollPosition,
+    behavior: "smooth",
+  };
+  window.scrollTo(scrollOptions);
+};
 
 const handleSearchbar = () => {
   if (inputValue.value == "") {
     emit("getMovies");
   } else {
     emit("getMovie", inputValue.value);
+    scrollToBottom();
   }
 };
 
