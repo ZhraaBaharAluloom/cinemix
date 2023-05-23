@@ -1,27 +1,16 @@
 <template>
   <div
-    class="flex justify-center gap-y-4 md:gap-0 md:justify-between items-center flex-wrap px-10 py-5"
+    class="flex justify-center gap-y-4 md:gap-x-24 md:justify-between items-center flex-wrap px-10 py-5"
   >
-    <a href="/" class="text-4xl text-green-900 font-[cursive]">Cookies</a>
+    <a href="/" class="text-5xl text-secondary font-[cursive]">CineMix</a>
+    <SearchBar class="flex-1" @getMovie="getQuery" />
     <nav>
       <ul class="flex justify-center space-x-4">
         <li>
-          <a href="#" class="text-green-900 text-lg hover:text-amber-900"
-            >Home</a
-          >
+          <a href="#" class="text-white text-lg hover:text-amber-900">Home</a>
         </li>
         <li>
-          <a href="#" class="text-green-900 text-lg hover:text-amber-900"
-            >Cookies</a
-          >
-        </li>
-        <li>
-          <custom-button
-            class="border-4 border-green-900 px-4 rounded-lg hover:bg-green-900 hover:text-white hover:-translate-y-1 hover:scale-110 duration-300"
-            @click="handleButtonClick"
-          >
-            Add Cookie
-          </custom-button>
+          <a href="#" class="text-white text-lg hover:text-amber-900">Movies</a>
         </li>
       </ul>
     </nav>
@@ -29,11 +18,15 @@
 </template>
 
 <script setup>
+import SearchBar from "./SearchBar.vue";
 import CustomButton from "./CustomButton.vue";
 
-const emit = defineEmits(["openModal"]);
+const emit = defineEmits(["openModal", "getMovie"]);
 
 const handleButtonClick = () => {
   emit("openModal");
+};
+const getQuery = (query) => {
+  emit("getMovie", query);
 };
 </script>
