@@ -16,7 +16,7 @@
         @getMovies="getMovies"
       />
       <div
-        class="text-4xl text-white flex flex-col justify-center items-center h-[80vh] font-serif"
+        class="text-4xl text-center text-white flex flex-col justify-center items-center h-[80vh] font-serif px-6"
       >
         <p>
           Welcome to
