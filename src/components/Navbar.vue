@@ -1,9 +1,13 @@
 <template>
   <div
-    class="flex justify-center gap-y-4 md:gap-x-24 md:justify-between items-center flex-wrap px-10 py-5"
+    class="flex justify-center gap-y-4 gap-x-4 md:gap-x-24 md:justify-between items-center flex-wrap px-10 py-5"
   >
     <a href="/" class="text-5xl text-secondary font-[cursive]">CineMix</a>
-    <SearchBar class="flex-1" @getMovie="getQuery" @getMovies="onGetMovies" />
+    <SearchBar
+      class="md:flex-1"
+      @getMovie="getQuery"
+      @getMovies="onGetMovies"
+    />
     <nav>
       <ul class="flex justify-center space-x-4">
         <li>
