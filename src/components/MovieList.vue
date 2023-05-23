@@ -4,6 +4,8 @@
       <div class="relative">
         <div
           class="overflow-hidden rounded-lg shadow-2xl shadow-slate-800 bg-indigo-50 bg-opacity-75 w-56 cursor-pointer"
+          @click="toggleOverlay"
+          :class="{ 'overlay-active': overlayActive }"
         >
           <div class="group">
             <img
@@ -43,7 +45,7 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import StarIcon from "vue-material-design-icons/Star.vue";
 
 const props = defineProps({
@@ -56,8 +58,20 @@ const imgURL = computed(() => {
 
 const emit = defineEmits(["removeMovie", "selectedMovieToEdit", "movieIndex"]);
 
+const overlayActive = ref(false);
+
+const toggleOverlay = () => {
+  overlayActive.value = !overlayActive.value;
+};
+
 const selectedMovieToEdit = (currentMovie) => {
   emit("openModal");
   emit("selectedMovieToEdit", currentMovie);
 };
 </script>
+
+<style scoped>
+.overlay-active .overlay {
+  opacity: 1;
+}
+</style>
