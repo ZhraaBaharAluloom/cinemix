@@ -15,9 +15,12 @@
               class="overlay flex flex-col items-center justify-end text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 absolute inset-0 hover:bg-slate-950 hover:bg-opacity-60"
             >
               <div
-                class="absolute top-4 right-4 bg-yellow-500 rounded-full p-1 text-sm text-primary"
+                class="absolute top-4 right-4 rounded-full p-1 text-md text-yellow-500"
               >
-                {{ movie.vote_average }}
+                <div class="flex gap-2">
+                  {{ movie.vote_average }}
+                  <StarIcon fillColor="#ffbe0b" @click="handleModal" />
+                </div>
               </div>
               <div class="font-bold text-lg m-2">
                 {{ movie.title || movie.name }}
@@ -41,6 +44,7 @@
 
 <script setup>
 import { computed } from "vue";
+import StarIcon from "vue-material-design-icons/Star.vue";
 
 const props = defineProps({
   movie: Object,
