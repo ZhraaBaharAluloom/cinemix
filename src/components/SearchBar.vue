@@ -53,17 +53,21 @@
           :key="movie.id"
           class="p-4 flex flex-wrap items-center cursor-pointer transition hover:bg-gray-900"
         >
-          <img
-            :src="imgURL + movie.backdrop_path"
-            :alt="movie.name"
-            class="lg:w-1/4 rounded-md mr-4"
-          />
-          <div class="md:flex-1 py-4">
-            <span class="text-lg font-semibold">{{ movie.name }}</span>
-            <p class="line-clamp-3 xl:line-clamp-5">
-              {{ movie.overview }}
-            </p>
-          </div>
+          <router-link
+            :to="{ name: 'Movie Details', params: { id: movie.id } }"
+          >
+            <img
+              :src="imgURL + movie.backdrop_path"
+              :alt="movie.name"
+              class="lg:w-1/4 rounded-md mr-4"
+            />
+            <div class="md:flex-1 py-4">
+              <span class="text-lg font-semibold">{{ movie.name }}</span>
+              <p class="line-clamp-3 xl:line-clamp-5">
+                {{ movie.overview }}
+              </p>
+            </div>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -76,7 +80,7 @@ import CloseIcon from "vue-material-design-icons/Close.vue";
 
 const inputValue = ref("");
 const showDropdown = ref(false);
-const emit = defineEmits(["getMovie", "getMovies"]);
+const emit = defineEmits(["getSearchedMovies", "getMovies"]);
 const imgURL = computed(() => {
   return `https://image.tmdb.org/t/p/w500/`;
 });
@@ -91,7 +95,7 @@ const searchMovies = () => {
 
 const handleSearchbar = () => {
   searchMovies();
-  emit("getMovie", inputValue.value);
+  emit("getSearchedMovies", inputValue.value);
 };
 
 const clearSearchBar = () => {
