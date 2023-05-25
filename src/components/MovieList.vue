@@ -1,5 +1,5 @@
 <template>
-  <TransitionGroup name="fade">
+  <router-link :to="{ name: 'Movie Details', params: { id: movie.id } }">
     <div>
       <div class="relative">
         <div
@@ -25,7 +25,7 @@
                 </div>
               </div>
               <div class="font-bold text-lg m-2">
-                {{ movie.title || movie.name }}
+                {{ movie.title }}
               </div>
               <div class="tags">
                 <span
@@ -41,7 +41,7 @@
         </div>
       </div>
     </div>
-  </TransitionGroup>
+  </router-link>
 </template>
 
 <script setup>
