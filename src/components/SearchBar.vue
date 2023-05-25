@@ -84,20 +84,6 @@ const imgURL = computed(() => {
 const props = defineProps({
   searchedMovies: Array,
 });
-console.log(
-  "🚀 ~ file: SearchBar.vue:82 ~ searchedMovies:",
-  props.searchedMovies
-);
-
-// const scrollToBottom = () => {
-//   const windowHeight = window.innerHeight;
-//   const scrollPosition = windowHeight * 0.9; // Set the desired scroll position as a percentage of the window height
-//   const scrollOptions = {
-//     top: scrollPosition,
-//     behavior: "smooth",
-//   };
-//   window.scrollTo(scrollOptions);
-// };
 
 const searchMovies = () => {
   showDropdown.value = inputValue.value.length > 0;

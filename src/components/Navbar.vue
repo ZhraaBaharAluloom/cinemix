@@ -24,7 +24,6 @@
 
 <script setup>
 import SearchBar from "./SearchBar.vue";
-import CustomButton from "./CustomButton.vue";
 
 defineProps({
   searchedMovies: Array,
@@ -32,9 +31,6 @@ defineProps({
 
 const emit = defineEmits(["openModal", "getMovie", "getMovies"]);
 
-const handleButtonClick = () => {
-  emit("openModal");
-};
 const getQuery = (query) => {
   emit("getMovie", query);
 };
