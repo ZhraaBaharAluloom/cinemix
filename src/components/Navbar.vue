@@ -7,6 +7,7 @@
       class="md:flex-1"
       @getMovie="getQuery"
       @getMovies="onGetMovies"
+      :searchedMovies="searchedMovies"
     />
     <nav>
       <ul class="flex justify-center space-x-4">
@@ -24,6 +25,10 @@
 <script setup>
 import SearchBar from "./SearchBar.vue";
 import CustomButton from "./CustomButton.vue";
+
+defineProps({
+  searchedMovies: Array,
+});
 
 const emit = defineEmits(["openModal", "getMovie", "getMovies"]);
 
