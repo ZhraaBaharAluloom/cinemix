@@ -5,7 +5,7 @@
     <a href="/" class="text-5xl text-secondary font-[cursive]">CineMix</a>
     <SearchBar
       class="md:flex-1"
-      @getMovie="getQuery"
+      @getSearchedMovies="getQuery"
       @getMovies="onGetMovies"
       :searchedMovies="searchedMovies"
     />
@@ -29,10 +29,10 @@ defineProps({
   searchedMovies: Array,
 });
 
-const emit = defineEmits(["openModal", "getMovie", "getMovies"]);
+const emit = defineEmits(["openModal", "getSearchedMovies", "getMovies"]);
 
 const getQuery = (query) => {
-  emit("getMovie", query);
+  emit("getSearchedMovies", query);
 };
 const onGetMovies = () => {
   emit("getMovies");
