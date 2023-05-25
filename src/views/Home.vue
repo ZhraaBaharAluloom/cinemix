@@ -12,7 +12,7 @@
     >
       <Navbar
         @openModal="openModal"
-        @getMovie="getMovie"
+        @getSearchedMovies="getSearchedMovies"
         @getMovies="getMovies"
         :searchedMovies="searchedMovies"
       />
@@ -86,19 +86,15 @@ const getMovies = async () => {
   try {
     const response = await instance.get(`/movie/popular?api_key=${API_KEY}`);
     moviesList.value = response.data.results;
-    console.log(
-      "🚀 ~ file: Home.vue:89 ~ getMovies ~ moviesList.value:",
-      moviesList.value
-    );
   } catch (error) {
     console.log("🚀 ~ file: tmdbServices.js:9 ~ getMovies ~ error:", error);
   }
 };
 
-const getMovie = async (movieName) => {
+const getSearchedMovies = async (movieName) => {
   try {
     const response = await instance.get(
-      `/search/collection?query=${movieName}&page=1&api_key=${API_KEY}`
+      `/search/movie?query=${movieName}&include_adult=false&language=en-US&page=1&api_key=${API_KEY}`
     );
     searchedMovies.value = response.data.results;
   } catch (error) {
